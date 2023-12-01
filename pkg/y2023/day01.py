@@ -1,5 +1,18 @@
-NUMBERS = [str(x) for x in range(1, 10)]
-NUMBERS_STARTING_CHARS = ["e", "f", "n", "o", "s", "t"]
+NUMBERS = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+NUMBERS_STARTING_CHARS = ['e', 'f', 'n', 'o', 's', 't']
+NUMBERS_MAP = {
+    'one': 1,
+    'two': 2,
+    'three': 3,
+    'four': 4,
+    'five': 5,
+    'six': 6,
+    'seven': 7,
+    'eight': 8,
+    'nine': 9,
+}
+
+one, two, three, four, five, six, seven, eight, nine = 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'
 
 
 def load_data(path: str) -> [str]:
@@ -12,75 +25,72 @@ def load_data(path: str) -> [str]:
 
 
 def part_one(path: str) -> int:
-    data = load_data(path)
+    lines = load_data(path)
 
     calibration_values = []
 
-    for string in data:
+    for line in lines:
         numbers = []
 
-        for char in string:
+        for char in line:
             if char in NUMBERS:
                 numbers.append(char)
 
         calibration_value = numbers[0] + numbers[-1]
-        calibration_values.append(calibration_value)
+        calibration_values.append(int(calibration_value))
 
-    return sum([int(x) for x in calibration_values])
+    return sum(calibration_values)
 
 
 def part_two(path: str) -> int:
-    data = load_data(path)
+    lines = load_data(path)
 
     calibration_values = []
 
-    for string in data:
+    for line in lines:
         numbers = []
 
-        for char in string:
-            if len(string) <= 0:
+        for char in line:
+            if len(line) <= 0:
                 break
 
             if char not in NUMBERS_STARTING_CHARS and char not in NUMBERS:
                 continue
 
             if char in NUMBERS:
-                numbers.append(char)
+                numbers.append(str(char))
                 continue
 
             if char in NUMBERS_STARTING_CHARS:
-                if string.startswith("one"):
-                    numbers.append(1)
-                elif string.startswith("two"):
-                    numbers.append(2)
-                elif string.startswith("three"):
-                    numbers.append(3)
-                elif string.startswith("four"):
-                    numbers.append(4)
-                elif string.startswith("five"):
-                    numbers.append(5)
-                elif string.startswith("six"):
-                    numbers.append(6)
-                elif string.startswith("seven"):
-                    numbers.append(7)
-                elif string.startswith("eight"):
-                    numbers.append(8)
-                elif string.startswith("nine"):
-                    numbers.append(9)
+                if line.startswith(one):
+                    numbers.append(NUMBERS_MAP[one])
+                elif line.startswith(two):
+                    numbers.append(NUMBERS_MAP[two])
+                elif line.startswith(three):
+                    numbers.append(NUMBERS_MAP[three])
+                elif line.startswith(four):
+                    numbers.append(NUMBERS_MAP[four])
+                elif line.startswith(five):
+                    numbers.append(NUMBERS_MAP[five])
+                elif line.startswith(six):
+                    numbers.append(NUMBERS_MAP[six])
+                elif line.startswith(seven):
+                    numbers.append(NUMBERS_MAP[seven])
+                elif line.startswith(eight):
+                    numbers.append(NUMBERS_MAP[eight])
+                elif line.startswith(nine):
+                    numbers.append(NUMBERS_MAP[nine])
                 else:
                     continue
 
         if len(numbers) == 1:
-            calibration_value = str(numbers[0]) + str(numbers[0])
+            calibration_value = numbers[0] + numbers[0]
         else:
-            calibration_value = str(numbers[0]) + str(numbers[-1])
+            calibration_value = numbers[0] + numbers[-1]
 
-        calibration_values.append(calibration_value)
+        calibration_values.append(int(calibration_value))
 
-    for i, calibration_value in enumerate(calibration_values):
-        print(f'{i+1}: {calibration_value}')
-
-    return sum([int(x) for x in calibration_values])
+    return sum(calibration_values)
 
 
 if __name__ == '__main__':
