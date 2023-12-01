@@ -37,51 +37,38 @@ def part_two(path: str) -> int:
     for string in data:
         numbers = []
 
-        while True:
+        for char in string:
             if len(string) <= 0:
                 break
 
-            char = string[0]
-
             if char not in NUMBERS_STARTING_CHARS and char not in NUMBERS:
-                string = string[1:]
                 continue
 
             if char in NUMBERS:
                 numbers.append(char)
-                string = string[1:]
                 continue
 
             if char in NUMBERS_STARTING_CHARS:
                 if string.startswith("one"):
                     numbers.append(1)
-                    string = string[1:]
                 elif string.startswith("two"):
                     numbers.append(2)
-                    string = string[1:]
                 elif string.startswith("three"):
                     numbers.append(3)
-                    string = string[1:]
                 elif string.startswith("four"):
                     numbers.append(4)
-                    string = string[1:]
                 elif string.startswith("five"):
                     numbers.append(5)
-                    string = string[1:]
                 elif string.startswith("six"):
                     numbers.append(6)
-                    string = string[1:]
                 elif string.startswith("seven"):
                     numbers.append(7)
-                    string = string[1:]
                 elif string.startswith("eight"):
                     numbers.append(8)
-                    string = string[1:]
                 elif string.startswith("nine"):
                     numbers.append(9)
-                    string = string[1:]
                 else:
-                    string = string[1:]
+                    continue
 
         if len(numbers) == 1:
             calibration_value = str(numbers[0]) + str(numbers[0])
