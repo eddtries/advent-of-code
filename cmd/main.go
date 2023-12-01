@@ -1,7 +1,9 @@
 package main
 
-import "github.com/eddtries/advent-of-code/pkg/y2022"
+import (
+	"github.com/eddtries/advent-of-code/pkg/y2023"
+)
 
 func main() {
-	y2022.Day01()
+	y2023.Day01()
 }

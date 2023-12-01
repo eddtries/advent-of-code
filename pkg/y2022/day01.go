@@ -3,7 +3,6 @@ package y2022
 import (
 	"fmt"
 	"sort"
-	"strconv"
 
 	"github.com/eddtries/advent-of-code/pkg/utils"
 )
@@ -18,11 +17,7 @@ func Day01() {
 			elves = append(elves, elf)
 			elf = 0
 		} else {
-			i, err := strconv.Atoi(line)
-			if err != nil {
-				fmt.Println(err)
-			}
-			elf += i
+			elf += utils.LineToInt(line)
 		}
 	}
 
