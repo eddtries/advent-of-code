@@ -51,9 +51,6 @@ def part_two(path: str) -> int:
         numbers = []
 
         for char in line:
-            if len(line) <= 0:
-                break
-
             if char not in NUMBERS_STARTING_CHARS and char not in NUMBERS:
                 continue
 
@@ -83,10 +80,7 @@ def part_two(path: str) -> int:
                 else:
                     continue
 
-        if len(numbers) == 1:
-            calibration_value = numbers[0] + numbers[0]
-        else:
-            calibration_value = numbers[0] + numbers[-1]
+        calibration_value = numbers[0] + numbers[-1]
 
         calibration_values.append(int(calibration_value))
 
